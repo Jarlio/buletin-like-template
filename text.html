@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <title>Buletin</title>
+    <link rel="stylesheet" type="text/css" href="css/uikit.css">
+    <link rel="stylesheet" type="text/css" href="css/text.css">
+
+    <script src="javascript/html2Canvas.js"></script>
+    <script src="javascript/dom-to-image.min.js"></script>
+    <script src="javascript/text.js"></script>
+    <script src="javascript/uikit.js"></script>
+    <script src="javascript/uikit-icons.js"></script>
+</head>
+
+<body>
+
+    <div class="uk-card uk-card-default buletin-1sth-container" id="buletin-1sth-container-inputs">
+        <div class="input-settings-container">
+            <div>
+                <p>
+                    <label>CNP: </label><input name="cnp" type="text" />
+                </p>
+                <p>
+                    <label>SERIA: </label><input name="seria" type="text" />
+                </p>
+                <p>
+                    <label>NR: </label><input name="nr" type="text" />
+                </p>
+                <p>
+                    <label>Nume/Last name: </label><input name="nume" type="text">
+                </p>
+                <p>
+                    <label>Prenume/First name: </label><input name="prenume" type="text">
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label>Cetatenie/Nationality: </label><input name="cetatenie" type="text">
+                </p>
+                <p>
+                    <label>Sex: </label><input placeholder="M/F" type="text" name="sex">
+                </p>
+                <p>
+                    <label>Loc de nastere: </label><input name="loc_de_nastere" type="text">
+                </p>
+                <p>
+                    <label>Domiciliu/Adresa: </label><input name="domiciliu" type="text">
+                </p>
+                <p>
+                    <label>Emis de: </label><input name="emis" type="text">
+                </p>
+                <p>
+                    <label>Valability: </label><input name="val_start" type="text" />
+                    <input name="val_end" type="text" />
+                </p>
+            </div>
+        </div>
+        <div class="settings-buttons">
+            <button id="generator" class="uk-button uk-button-default" onclick="generate()">Genereaza buletin</button>
+            <button id="downloader" class="uk-button uk-button-default" onclick="download()">Download buletin</button>
+        </div>
+
+        <h1>Buletin generat de input</h1>
+        <div class="buletin-container" id="buletin-container-inputs">
+            <div class="buletin-2th-container" id="buletin-2th-container-inputs">
+                <div class="buletin-color-wrapper" id="buletin-color-wrapper-inputs">
+
+                </div>
+                <div class="buletin" id="buletin-inputs">
+                    <p id="cnp"></p>
+                    <p id="seria"></p>
+                    <p id="nr"></p>
+                    <p id="nume">Apostol</p>
+                    <p id="prenume">Gabriel</p>
+                    <p id="sex">M</p>
+                    <p id="cetatenie">Romana / ROU</p>
+                    <p id="loc_de_nastere">Mun. Bucuresti Sec. 4</p>
+                    <p id="domiciliu"></p>
+                    <p id="emis"></p>
+                    <p id="valabilitate">
+                        <span id="val_start"></span> -
+                        <span id="val_end"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="settings-container">
+            <div class="setting">
+                <label>Unghiul de rotatie: <p id="unghiRotatie-p-inputs">0</p>°</label>
+                <div class="uk-margin">
+                    <input class="uk-range" type="range" value="0" min="0" max="360" step="1"
+                        id="unghiRotatie-input-inputs" oninput="rotate(this)" onchange="rotate(this)">
+                </div>
+            </div>
+            <div class="setting">
+                <label>Shadow color: <p id="color-p-inputs">#ffffff</p></label>
+                <div class="uk-margin">
+                    <input class="uk-input" type="color" id="color-input-inputs" value="#ffffff"
+                        oninput="setBackground(this)" onchange="setBackground(this)">
+                </div>
+            </div>
+            <div class="setting">
+                <label>Shadow: <p id="opacity-p-inputs">0</p></label>
+                <div class="uk-margin">
+                    <input class="uk-range" type="range" value="0" min="0" max="1" step="0.01" id="opacity-input-inputs"
+                        oninput="luminozity(this)" onchange="luminozity(this)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
