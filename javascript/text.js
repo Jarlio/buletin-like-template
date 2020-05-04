@@ -135,7 +135,7 @@ function download_current(callback_next) {
             img.src = dataUrl;
 
             var link = document.createElement('a');
-            link.download = 'buletin.png';
+            link.download = 'buletin' + totalNumberOfDownloadPages + '.png';
             link.href = img.src;
             link.click();
 
@@ -156,7 +156,7 @@ function download_current(callback_next) {
 function downloadAll() {
     var bar = document.getElementById('download-all-progress');
     bar.setAttribute("max", lungimeBuletine);
-    
+
     images = [];
     totalNumberOfDownloadPages = 0;
     download_current(next);
