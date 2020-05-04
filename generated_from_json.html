@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>Buletin</title>
+    <link rel="stylesheet" type="text/css" href="css/uikit.css">
+    <link rel="stylesheet" type="text/css" href="css/text.css">
+    <link rel="stylesheet" type="text/css" href="css/generate_from_json.css">
+
+    <script src="javascript/html2Canvas.js"></script>
+    <script src="javascript/dom-to-image.min.js"></script>
+    <script src="javascript/text.js"></script>
+    <script src="javascript/uikit.js"></script>
+    <script src="javascript/uikit-icons.js"></script>
+</head>
+
+<body onload="start()">
+    <button class="uk-button uk-button-default" style="width: 100%"><a href="text.html">MANUAL</a></button>
+    <div class="button-pagination-container">
+        <button class="uk-button uk-button-default" id="previous" onclick="previous()">Previous</button>
+        <button id="downloader" class="uk-button uk-button-default" onclick="download()">Download buletin</button>
+        <button class="uk-button uk-button-default" id="next" onclick="next()">Next</button>
+    </div>
+    <div class="buletin-container" id="buletin-container-inputs" data-index="0">
+        <div class="buletin-2th-container" id="buletin-2th-container-inputs">
+            <div class="buletin-color-wrapper" id="buletin-color-wrapper-inputs">
+
+            </div>
+            <div class="buletin" id="buletin-inputs">
+                <p id="cnp"></p>
+                <p id="seria"></p>
+                <p id="nr"></p>
+                <p id="nume">Apostol</p>
+                <p id="prenume">Gabriel</p>
+                <p id="sex">M</p>
+                <p id="cetatenie">Romana / ROU</p>
+                <p id="loc_de_nastere">Mun. Bucuresti Sec. 4</p>
+                <p id="domiciliu"></p>
+                <p id="emis"></p>
+                <p id="valabilitate">
+                    <span id="val_start"></span> -
+                    <span id="val_end"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="settings-container">
+        <div class="setting">
+            <label>Unghiul de rotatie: <span id="unghiRotatie-span-inputs">0</span>°</label>
+            <div class="uk-margin">
+                <input class="uk-range" type="range" value="0" min="0" max="360" step="1" id="unghiRotatie-input-inputs"
+                    oninput="rotate(this)" onchange="rotate(this)">
+            </div>
+        </div>
+        <div class="setting">
+            <label>Shadow color: <span id="color-span-inputs">#ffffff</span></label>
+            <div class="uk-margin">
+                <input class="uk-input" type="color" id="color-input-inputs" value="#ffffff"
+                    oninput="setBackground(this)" onchange="setBackground(this)">
+            </div>
+        </div>
+        <div class="setting">
+            <label>Shadow: <span id="opacity-span-inputs">0</span></label>
+            <div class="uk-margin">
+                <input class="uk-range" type="range" value="0" min="0" max="1" step="0.01" id="opacity-input-inputs"
+                    oninput="luminozity(this)" onchange="luminozity(this)">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

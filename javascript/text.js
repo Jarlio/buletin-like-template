@@ -6,6 +6,55 @@ function generate() {
     });
 }
 
+function start(){
+    var index = document.getElementById("buletin-container-inputs").getAttribute("data-index");
+    generateFromJson(parseInt(index));
+}
+
+function generateFromJson(index) {
+    /* read the json */
+    var request = new XMLHttpRequest();
+    request.open('GET', 'javascript/info.json', false); // `false` makes the request synchronous
+    request.send(null);
+
+    var buletine = [];
+    if (request.status === 200) {
+        buletine = JSON.parse(request.responseText)["buletine"];
+    }
+    console.log(buletine)
+    console.log(index)
+    console.log(buletine[index])
+
+    if (buletine[index]) {
+        console.log("if")
+        for (var elementIndex in buletine[index]) {
+            console.log(elementIndex)
+            var cor_spam = document.getElementById(elementIndex);
+            cor_spam.innerText = buletine[index][elementIndex];
+        }
+
+        var mainBuletinContainer = document.getElementById("buletin-container-inputs");
+        mainBuletinContainer.setAttribute("data-index", index);
+        console.log(mainBuletinContainer.getAttribute("data-index"));
+    } else {
+        alert("Asta este ori primul ori ultimul buletin")
+    }
+}
+
+function next() {
+    /* hard coded selection */
+    var index = document.getElementById("buletin-container-inputs").getAttribute("data-index");
+    console.log(index)
+    generateFromJson(parseInt(index) + 1);
+}
+
+function previous() {
+    /* hard coded selection */
+    var index = document.getElementById("buletin-container-inputs").getAttribute("data-index");
+    console.log(index)
+    generateFromJson(parseInt(index) - 1);
+}
+
 function rotate(element) {
     var utilityArray = element.id.split('-');
     var buletinIdentificator = utilityArray[utilityArray.length - 1]
@@ -70,6 +119,19 @@ function download() {
         });
 
 }
+
+function readTextFile(file) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function () {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            return rawFile.responseText;
+        }
+    }
+    rawFile.send(null);
+}
+
 
 /* returns a hierarchy of all tabs with a given name 
  * ex for "div" given as tagName: {

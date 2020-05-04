@@ -1,0 +1,42 @@
+{
+    "buletine": [{
+        "seria": "RX",
+        "nr": "123456",
+        "nume": "Gojgar",
+        "prenume": "Alexandru-Florin",
+        "cetatenie": "RO",
+        "sex": "M",
+        "loc_de_nastere": "Bucuresti, Sector3",
+        "domiciliu": "Bucuresti, Sector 3, Str. Baba Novac",
+        "emis": "SPCEP S3",
+        "val_start": "23.04.10",
+        "val_end": "23.04.2020",
+        "cnp": "1970400420041"
+    }, {
+        "seria": "RX",
+        "nr": "111222",
+        "nume": "Gojgar",
+        "prenume": "Alexandru-Florin",
+        "cetatenie": "RO",
+        "sex": "M",
+        "loc_de_nastere": "Bucuresti, Sector3",
+        "domiciliu": "Bucuresti, Sector 3, Str. Baba Novac",
+        "emis": "SPCEP S3",
+        "val_start": "23.04.10",
+        "val_end": "23.04.2020",
+        "cnp": "1961401420342"
+    }, {
+        "seria": "RX",
+        "nr": "333444",
+        "nume": "Gojgar",
+        "prenume": "Alexandru-Florin",
+        "cetatenie": "RO",
+        "sex": "M",
+        "loc_de_nastere": "Bucuresti, Sector3",
+        "domiciliu": "Bucuresti, Sector 3, Str. Baba Novac",
+        "emis": "SPCEP S3",
+        "val_start": "23.04.10",
+        "val_end": "23.04.2020",
+        "cnp": "1956401422041"
+    }]
+}
