@@ -4,3 +4,10 @@
     align-items: center;
     margin: 10px 0;
 }
+
+.container-download-all{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

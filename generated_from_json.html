@@ -15,6 +15,10 @@
 
 <body onload="start()">
     <button class="uk-button uk-button-default" style="width: 100%"><a href="text.html">MANUAL</a></button>
+    <div class="container-download-all">
+        <progress class="uk-progress" id="download-all-progress"></progress>
+        <button class="uk-button uk-button-default" onclick="downloadAll()">Descarca tot</button>
+    </div>
     <div class="button-pagination-container">
         <button class="uk-button uk-button-default" id="previous" onclick="previous()">Previous</button>
         <button id="downloader" class="uk-button uk-button-default" onclick="download()">Download buletin</button>

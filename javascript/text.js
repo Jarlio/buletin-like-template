@@ -1,3 +1,7 @@
+var totalNumberOfDownloadPages = 0;
+var lungimeBuletine = 0;
+
+
 function generate() {
     var arr = Array.prototype.slice.call(document.getElementsByTagName('input'))
     arr.forEach(element => {
@@ -6,12 +10,13 @@ function generate() {
     });
 }
 
-function start(){
+function start() {
     var index = document.getElementById("buletin-container-inputs").getAttribute("data-index");
     generateFromJson(parseInt(index));
 }
 
-function generateFromJson(index) {
+
+function generateFromJson(index, callback) {
     /* read the json */
     var request = new XMLHttpRequest();
     request.open('GET', 'javascript/info.json', false); // `false` makes the request synchronous
@@ -21,14 +26,10 @@ function generateFromJson(index) {
     if (request.status === 200) {
         buletine = JSON.parse(request.responseText)["buletine"];
     }
-    console.log(buletine)
-    console.log(index)
-    console.log(buletine[index])
+    lungimeBuletine = buletine.length;
 
     if (buletine[index]) {
-        console.log("if")
         for (var elementIndex in buletine[index]) {
-            console.log(elementIndex)
             var cor_spam = document.getElementById(elementIndex);
             cor_spam.innerText = buletine[index][elementIndex];
         }
@@ -36,16 +37,19 @@ function generateFromJson(index) {
         var mainBuletinContainer = document.getElementById("buletin-container-inputs");
         mainBuletinContainer.setAttribute("data-index", index);
         console.log(mainBuletinContainer.getAttribute("data-index"));
+        if (callback) {
+            callback(next);
+        }
     } else {
         alert("Asta este ori primul ori ultimul buletin")
     }
 }
 
-function next() {
+function next(callback) {
     /* hard coded selection */
     var index = document.getElementById("buletin-container-inputs").getAttribute("data-index");
     console.log(index)
-    generateFromJson(parseInt(index) + 1);
+    generateFromJson(parseInt(index) + 1, callback);
 }
 
 function previous() {
@@ -119,6 +123,45 @@ function download() {
         });
 
 }
+var images = [];
+
+
+function download_current(callback_next) {
+    var node = document.getElementById('buletin-container-inputs');
+
+    domtoimage.toPng(node)
+        .then(function (dataUrl) {
+            var img = new Image();
+            img.src = dataUrl;
+
+            var link = document.createElement('a');
+            link.download = 'buletin.png';
+            link.href = img.src;
+            link.click();
+
+            var bar = document.getElementById('download-all-progress');
+            bar.value += totalNumberOfDownloadPages;
+
+            if (totalNumberOfDownloadPages < lungimeBuletine - 1) {
+                totalNumberOfDownloadPages++;
+                callback_next(download_current);
+            }
+        })
+        .catch(function (error) {
+            console.error('oops, something went wrong!', error);
+        });
+}
+
+
+function downloadAll() {
+    var bar = document.getElementById('download-all-progress');
+    bar.setAttribute("max", lungimeBuletine);
+    
+    images = [];
+    totalNumberOfDownloadPages = 0;
+    download_current(next);
+}
+
 
 function readTextFile(file) {
     var rawFile = new XMLHttpRequest();
